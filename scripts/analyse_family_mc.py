@@ -53,9 +53,12 @@ axs[0].axhline(1 / 24, c="#c0392b", ls=":", lw=.8)
 axs[0].plot([0.15, 4 / 3, 4 / 3, 1.8], [1 / 6, 1 / 6, 1 / 24, 1 / 24], c="#c0392b", ls="--", lw=1,
             label="T = 0, 4x4 torus (commensurability artifact)")
 rows = [json.loads(l) for l in open(os.path.join(ROOT, "data", "family_x34_finiteT.jsonl"))]
-for T, c in ((0.02, "#1f5fae"), (0.06, "#3d8ad1"), (0.12, "#7fb3e6"), (0.2, "#bcd7f2")):
-    rr = sorted([r for r in rows if r.get("L") == 8 and r["T"] == T and "n3" in r], key=lambda r: r["q"])
-    axs[0].plot([r["q"] for r in rr], [r["n3"] for r in rr], c=c, label=f"TM L=8, T={T}")
+low = [json.loads(l) for l in open(os.path.join(ROOT, "data", "family_x34_lowT.jsonl"))]
+# low T from the fine scan (L = 6; the L = 8, T = 0.02 points near q = 1.07 are numerically unstable)
+for T, c, src, L in ((0.015, "#0b3d7a", low, 6), (0.03, "#1f5fae", low, 6), (0.06, "#3d8ad1", rows, 8),
+                     (0.12, "#7fb3e6", rows, 8), (0.2, "#bcd7f2", rows, 8)):
+    rr = sorted([r for r in src if r.get("L") == L and r["T"] == T and "n3" in r], key=lambda r: r["q"])
+    axs[0].plot([r["q"] for r in rr], [r["n3"] for r in rr], c=c, label=f"TM L={L}, T={T}")
 axs[0].set_xlim(0.9, 1.45); axs[0].set_ylim(0, 0.2); axs[0].set_xlabel("q"); axs[0].set_ylabel("f_exp / n3")
 axs[0].legend(fontsize=7); axs[0].set_title("x = 3/4 stripes, p = 0.1: kinks at q = 1.05, 1.10", fontsize=9)
 for j, qq in enumerate(sorted(res)):
