@@ -14,6 +14,10 @@ pairs the B sites of two opposite edges and bonds them to each other:
 Every B belongs to exactly one plaquette, so summing out B gives an exact
 plaquette weight W(a00, a10, a01, a11).  Arrays below are indexed
 [a00, a10, a01, a11].
+
+Interpolating family: an *unpaired* plaquette keeps the same two B sites
+(same orientation rule) but drops their B-B bond, so its weight factorises
+into two 2-site factors.  Kinds "HU" / "VU" are the unpaired versions.
 """
 import numpy as np
 
@@ -38,13 +42,16 @@ def _plaquette_terms(p, q, kind):
     A11 = a.reshape(1, 1, 1, Q, 1, 1)
     C = a.reshape(1, 1, 1, 1, Q, 1)
     CP = a.reshape(1, 1, 1, 1, 1, Q)
-    if kind == "H":   # c on (a00,a10), c' on (a01,a11)
+    paired = not kind.endswith("U")
+    orient = kind[0]
+    if orient == "H":   # c on (a00,a10), c' on (a01,a11)
         bonds = (C == A00) * 1 + (C == A10) + (CP == A01) + (CP == A11)
-    elif kind == "V":  # c on (a00,a01), c' on (a10,a11)
+    elif orient == "V":  # c on (a00,a01), c' on (a10,a11)
         bonds = (C == A00) * 1 + (C == A01) + (CP == A10) + (CP == A11)
     else:
         raise ValueError(kind)
-    bonds = bonds + (C == CP)
+    if paired:
+        bonds = bonds + (C == CP)
     en = bonds + E[C] + E[CP]
     n3 = (C == 2).astype(float) + (CP == 2)
     n2 = (C == 1).astype(float) + (CP == 1)
