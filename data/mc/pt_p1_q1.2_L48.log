@@ -1,0 +1,22 @@
+pilot sigma_E [ 4.1  4.9  5.1  6.6  9.3 11.9 12.8  9.   9.1  8.8  9.   9.2] -> R = 29
+bin 0 t=218s acc min 0.34 trips 0
+bin 10 t=274s acc min 0.42 trips 7
+bin 20 t=329s acc min 0.42 trips 11
+bin 30 t=383s acc min 0.41 trips 15
+bin 40 t=441s acc min 0.42 trips 20
+bin 50 t=497s acc min 0.42 trips 27
+bin 60 t=553s acc min 0.42 trips 33
+bin 70 t=609s acc min 0.42 trips 39
+bin 80 t=667s acc min 0.42 trips 43
+bin 90 t=726s acc min 0.42 trips 47
+bin 100 t=787s acc min 0.42 trips 50
+bin 110 t=846s acc min 0.42 trips 54
+bin 120 t=904s acc min 0.42 trips 62
+bin 130 t=961s acc min 0.42 trips 68
+bin 140 t=1018s acc min 0.41 trips 73
+bin 150 t=1076s acc min 0.41 trips 78
+bin 160 t=1135s acc min 0.41 trips 82
+bin 170 t=1192s acc min 0.41 trips 87
+bin 180 t=1249s acc min 0.41 trips 92
+bin 190 t=1305s acc min 0.41 trips 97
+done 1353.723402261734
