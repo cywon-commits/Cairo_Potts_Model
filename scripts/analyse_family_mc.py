@@ -22,8 +22,10 @@ def modes(h, edges, frac=0.05):
     return len(merged)
 
 
+SUB = sys.argv[1] if len(sys.argv) > 1 else "mc_family"
 res = collections.defaultdict(dict)
-for fn in sorted(glob.glob(os.path.join(ROOT, "data", "mc_family", "fam_q*_L*.npz"))):
+for fn in sorted(glob.glob(os.path.join(ROOT, "data", "mc_family", "fam_q*_L16.npz"))
+                 + glob.glob(os.path.join(ROOT, "data", SUB, "fam_q*_L*.npz"))):
     d = np.load(fn); meta = json.loads(str(d["meta"]))
     L, q = meta["L"], meta["q"]; N = 3 * L * L
     b = d["bins"]; b = b[np.abs(b).sum(axis=(1, 2)) > 0]
@@ -40,7 +42,7 @@ for fn in sorted(glob.glob(os.path.join(ROOT, "data", "mc_family", "fam_q*_L*.np
     print(f"q={q} L={L} bins={len(b)} acc_min={d['acc'].min():.2f}")
     for i, T in enumerate(d["Ts"]):
         print(f"   T={T:.4f} n3={n3[i]:.5f}({e3[i]*1e5:.0f}) chi3=N*Var(n3)={chi[i]:.4f}({echi[i]:.4f}) modes={nm[i]}")
-json.dump(res, open(os.path.join(ROOT, "data", "family_mc_summary.json"), "w"), indent=1)
+json.dump(res, open(os.path.join(ROOT, "data", f"family_mc_summary_{SUB}.json"), "w"), indent=1)
 
 # ---------------------------------------------------------------- figure
 fig, axs = plt.subplots(1, 3, figsize=(16, 4.4))
