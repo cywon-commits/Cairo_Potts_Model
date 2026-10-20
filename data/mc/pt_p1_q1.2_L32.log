@@ -1,3 +1,5 @@
 pilot sigma_E [2.7 3.3 3.7 4.3 5.3 8.  7.4 6.6 6.  5.9 6.  5.9] -> R = 20
 bin 0 t=129s acc min 0.36 trips 2
 bin 10 t=202s acc min 0.42 trips 18
+bin 20 t=263s acc min 0.42 trips 33
+bin 30 t=315s acc min 0.42 trips 57

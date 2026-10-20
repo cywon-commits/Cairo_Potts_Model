@@ -58,9 +58,12 @@ for q in qs:
     if c:
         tc1.append((q, max(c)[0], max(c)[1]))
     c2 = cross(D, q, 8, 10, "o2")
-    if c2 and 0.75 < q < 1.25:
+    # separate crystal <-> line boundary only where it lies below T_c1;
+    # for |q - p| >~ 0.15 the two transitions merge
+    if c2 and 0.85 < q < 1.15 and c and max(c2)[0] < max(c)[0] - 0.005:
         tc2.append((q, max(c2)[0]))
-tc1 = np.array(tc1); tc2 = np.array(tc2) if tc2 else np.zeros((0, 2))
+tc1 = np.array(tc1)
+tc2 = np.array(sorted(tc2 + [(1.0, 0.0)]))  # T=0 extensive degeneracy at p = q
 fo = [r for r in json.load(open(os.path.join(DATA, "first_order_line_p1.json"))) if r["L"] == 10]
 fo = np.array([(r["qc"], r["T"], r["n3_lo"] - r["n3_hi"]) for r in fo if np.isfinite(r["qc"])])
 
@@ -91,9 +94,9 @@ ax.axvline(1.0, c="grey", lw=.6, ls=":")
 ax.text(1.0, 0.012, "p=q", ha="center", fontsize=8, color="grey")
 ax.text(0.35, 0.10, "crystal\n(4 states, colour 1\non one of 4 A sub-sublattices)", fontsize=8, ha="center")
 ax.text(1.27, 0.06, "crystal", fontsize=8, ha="center")
-ax.text(1.0, 0.05, "line\nphase", fontsize=8, ha="center", color="#7d3c98")
+ax.text(1.0, 0.075, "line\nphase", fontsize=8, ha="center", color="#7d3c98")
 ax.text(1.53, 0.08, "M /\nparamagnet", fontsize=8, ha="center")
-ax.text(0.7, 0.27, "paramagnet", fontsize=9)
+ax.text(0.65, 0.235, "paramagnet", fontsize=9)
 ax.set_xlim(-0.02, 1.6); ax.set_ylim(0, 0.3)
 ax.set_xlabel("q = D$_3$  (p = D$_2$ = 1, J = 1)"); ax.set_ylabel("T / J")
 ax.legend(fontsize=7.5, loc="upper right")
