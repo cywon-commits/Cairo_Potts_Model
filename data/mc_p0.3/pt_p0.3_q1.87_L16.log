@@ -2,3 +2,10 @@ bin 0 t=51s acc min 0.35 trips 0
 bin 10 t=70s acc min 0.35 trips 0
 bin 20 t=89s acc min 0.35 trips 0
 bin 30 t=108s acc min 0.35 trips 0
+bin 40 t=127s acc min 0.36 trips 0
+bin 50 t=146s acc min 0.36 trips 0
+bin 60 t=164s acc min 0.36 trips 0
+bin 70 t=183s acc min 0.36 trips 0
+bin 80 t=201s acc min 0.36 trips 0
+bin 90 t=220s acc min 0.36 trips 0
+done 236.94306993484497

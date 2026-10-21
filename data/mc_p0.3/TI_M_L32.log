@@ -1,0 +1,11 @@
+bin 0 t=95s acc min 0.87 trips 22
+bin 10 t=148s acc min 0.88 trips 125
+bin 20 t=200s acc min 0.88 trips 250
+bin 30 t=251s acc min 0.88 trips 377
+bin 40 t=301s acc min 0.88 trips 542
+bin 50 t=352s acc min 0.88 trips 689
+bin 60 t=404s acc min 0.88 trips 821
+bin 70 t=454s acc min 0.87 trips 955
+bin 80 t=503s acc min 0.87 trips 1064
+bin 90 t=554s acc min 0.87 trips 1216
+done 600.2957849502563
