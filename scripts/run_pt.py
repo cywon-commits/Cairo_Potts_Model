@@ -24,6 +24,8 @@ ap.add_argument("--bins", type=int, default=100)
 ap.add_argument("--bin_size", type=int, default=1000)
 ap.add_argument("--seed", type=int, default=0)
 ap.add_argument("--ladder", type=float, nargs="*", help="explicit temperatures (skip pilot)")
+ap.add_argument("--init_M_below", type=float, default=None,
+                help="start replicas with T below this value in the M state (all A = colour 2)")
 ap.add_argument("--out", required=True)
 a = ap.parse_args()
 N = 3 * a.L ** 2
@@ -47,8 +49,13 @@ else:
     print("pilot sigma_E", np.round(sig, 1), "-> R =", len(Ts), flush=True)
 
 run = PTRun(a.L, Ts, a.p, a.q, seed=a.seed)
+if a.init_M_below is not None:
+    for i, T in enumerate(run.Ts):
+        if T < a.init_M_below:
+            run.cfg[run.where[i]][:] = 1   # code 1 = colour 2 on every A site (M phase)
 t0 = time.time()
-meta = dict(L=a.L, p=a.p, q=a.q, Ts=Ts.tolist(), obs=OBS, bin_size=a.bin_size, therm=a.therm)
+meta = dict(L=a.L, p=a.p, q=a.q, Ts=Ts.tolist(), obs=OBS, bin_size=a.bin_size, therm=a.therm,
+            init_M_below=a.init_M_below)
 
 
 def save(bidx, bins):
