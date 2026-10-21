@@ -1,1 +1,6 @@
 bin 0 t=31s acc_min 0.47
+bin 20 t=66s acc_min 0.51
+bin 40 t=100s acc_min 0.51
+bin 60 t=134s acc_min 0.52
+bin 80 t=167s acc_min 0.51
+done 197.7245008945465
