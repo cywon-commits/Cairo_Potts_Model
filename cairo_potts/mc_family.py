@@ -12,7 +12,7 @@ from numba import njit
 from .model import Q, costs, plaquette_tables, _plaquette_terms
 
 KINDS = ("H", "V", "HU", "VU")
-OBS = ["E", "E2", "Evar", "n3", "n32", "nb"]
+OBS = ["E", "E2", "Evar", "n3", "n32", "nb", "M", "M2", "M4", "absM"]
 
 
 def tables(beta, p, q):
@@ -71,8 +71,10 @@ def total_logw(a, logW, mbE, L, K):
 
 
 @njit(cache=True)
-def measure(a, e, evar, n3t, nbt, Ea, L, K, out):
-    E = 0.0; V = 0.0; n3 = 0.0; nb = 0.0
+def measure(a, e, evar, n3t, nbt, Ea, L, K, tmpl, out):
+    """tmpl[x, y]: order-parameter template (tiled ground-state pattern of
+    delta(a,1) - delta(a,2)); M = sum phi * tmpl / sum tmpl^2."""
+    E = 0.0; V = 0.0; n3 = 0.0; nb = 0.0; M = 0.0; norm = 0.0
     for x in range(L):
         for y in range(L):
             xp = (x + 1) % L; yp = (y + 1) % L
@@ -82,17 +84,30 @@ def measure(a, e, evar, n3t, nbt, Ea, L, K, out):
             V += evar[k, c00, c10, c01, c11]
             n3 += n3t[k, c00, c10, c01, c11] + (c00 == 2)
             nb += nbt[k, c00, c10, c01, c11]
+            t = tmpl[x, y]
+            M += t * ((c00 == 0) * 1.0 - (c00 == 1) * 1.0)
+            norm += t * t
     N = 3.0 * L * L
     out[0] = E / N; out[1] = (E / N) ** 2; out[2] = V / N ** 2
     out[3] = n3 / N; out[4] = (n3 / N) ** 2; out[5] = nb / N
+    if norm > 0:
+        M /= norm
+    out[6] = M; out[7] = M * M; out[8] = M ** 4; out[9] = abs(M)
 
 
 class FamilyPT:
     H_N3 = np.linspace(0.0, 0.4, 801)     # histogram edges, n3 per site
     H_E = np.linspace(0.0, 0.6, 1201)     # histogram edges, E per site
 
-    def __init__(self, L, Ts, p, q, sel, seed=0):
+    def __init__(self, L, Ts, p, q, sel, seed=0, template=None):
         self.L, self.p, self.q = L, p, q
+        if template is None:
+            self.tmpl = np.zeros((L, L))
+        else:
+            px, py = template.shape
+            if L % px or L % py:
+                raise ValueError("L must be a multiple of the template period")
+            self.tmpl = np.tile(template, (L // px, L // py)).astype(float)
         self.K = kind_map(L, sel)
         self.Ts = np.array(sorted(Ts)); self.R = len(self.Ts)
         self.rng = np.random.default_rng(seed)
@@ -133,7 +148,7 @@ class FamilyPT:
                 for i in range(self.R):
                     t = self.tab[i]
                     measure(self.cfg[self.where[i]], t["e"], t["evar"], t["n3"], t["nb"],
-                            self.Ea, self.L, self.K, tmp[i])
+                            self.Ea, self.L, self.K, self.tmpl, tmp[i])
                     self.hn3[i, min(max(np.searchsorted(self.H_N3, tmp[i, 3]) - 1, 0), len(self.H_N3) - 2)] += 1
                     self.hE[i, min(max(np.searchsorted(self.H_E, tmp[i, 0]) - 1, 0), len(self.H_E) - 2)] += 1
                 acc += tmp

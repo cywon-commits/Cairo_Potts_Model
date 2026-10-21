@@ -25,6 +25,11 @@ def stripe_sel(n):
     return (lambda x, y: (x % n) != n - 1), n
 
 
+def stripe_sel_low(n):
+    """x = 1/n: only plaquettes in columns x = 0 (mod n) are paired."""
+    return (lambda x, y: (x % n) == 0), n
+
+
 def _corner(p, q):
     E = costs(p, q)
     return (E[:, None, None, None] + E[None, :, None, None]

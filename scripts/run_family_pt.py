@@ -18,7 +18,8 @@ a = ap.parse_args()
 if a.L % 8:
     print("warning: L not a multiple of 8 frustrates the x = 3/4 ground state")
 sel, n = stripe_sel(4)
-run = FamilyPT(a.L, a.T, 0.1, a.q, sel, seed=a.L)
+tmpl = np.load(os.path.join(os.path.dirname(__file__), "..", "data", "family_template_8x2.npy"))
+run = FamilyPT(a.L, a.T, 0.1, a.q, sel, seed=a.L, template=tmpl)
 t0 = time.time()
 
 
