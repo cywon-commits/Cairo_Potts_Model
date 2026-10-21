@@ -16,8 +16,12 @@ def U(b, obs):
     return 1 - m4 / (3 * m2 ** 2), m2
 
 
+# window for the crossing search (the U curves coincide deep in the ordered phase)
+TLO = float(sys.argv[1]) if len(sys.argv) > 2 else 0.24
+THI = float(sys.argv[2]) if len(sys.argv) > 2 else 0.29
+SUB = sys.argv[3] if len(sys.argv) > 3 else "mc_family_op"
 res = collections.defaultdict(dict)
-for fn in sorted(glob.glob(os.path.join(ROOT, "data", "mc_family_op", "fam_q*_L*.npz"))):
+for fn in sorted(glob.glob(os.path.join(ROOT, "data", SUB, "fam_q*_L*.npz"))):
     meta, Ts, b, obs, acc = load(fn)
     u, m2 = U(b, obs)
     nb = len(b); blocks = np.array_split(np.arange(nb), 20)
@@ -32,7 +36,7 @@ for q, rr in sorted(res.items()):
     for L1, L2 in zip(Ls[:-1], Ls[1:]):
         a, b2 = rr[L1], rr[L2]
         def cross(u1, u2):
-            Tg = np.linspace(0.15, 0.33, 4000)
+            Tg = np.linspace(TLO, THI, 4000)
             d = np.interp(Tg, a["T"], u1) - np.interp(Tg, b2["T"], u2)
             s = np.where((d[:-1] < 0) & (d[1:] >= 0) | (d[:-1] > 0) & (d[1:] <= 0))[0]
             if not len(s):
@@ -49,4 +53,4 @@ for q, rr in sorted(res.items()):
     for L in Ls:
         r = rr[L]; i = np.argmin(np.abs(r["T"] - 0.25))
         print(f"   L={L}: U(T) at T=0.20,0.25,0.30: {np.round(np.interp([0.2,0.25,0.3], r['T'], r['U']),3).tolist()}")
-json.dump(out, open(os.path.join(ROOT, "data", "family_op_crossings.json"), "w"), indent=1)
+json.dump(out, open(os.path.join(ROOT, "data", f"family_op_crossings_{SUB}.json"), "w"), indent=1)

@@ -1,0 +1,15 @@
+{
+ "_note": "p = 0.1. Tc = 0 means no long-range order at any T > 0 (x <= 1/2). x = 1: TM gap crossing L=8/10 (converged); x = 3/4: MC Binder crossing (24,32) of the template order parameter (TM crossings drift towards it).",
+ "0.5":  {"1.0": {"Tc": 0.1566, "err": 0.0003, "method": "TM"},
+          "0.75": {"Tc": 0.1385, "err": 0.0021, "method": "MC (24,32); (16,24) 0.1406(6)"},
+          "0.5": {"Tc": 0.0, "method": "TM: disordered to T=0.02; s0 = ln2/6"},
+          "0.25": {"Tc": 0.0, "method": "TM: disordered to T=0.02; s0 = ln2/12"}},
+ "1.05": {"1.0": {"Tc": 0.2568, "err": 0.0002, "method": "TM"},
+          "0.75": {"Tc": 0.2569, "err": 0.0009, "method": "MC (24,32)"},
+          "0.5": {"Tc": 0.0, "method": "TM: unique ground state (f_exp = 0 phase)"},
+          "0.25": {"Tc": 0.0, "method": "TM: unique ground state (f_exp = 0 phase)"}},
+ "1.1":  {"1.0": {"Tc": 0.2606, "err": 0.0002, "method": "TM"},
+          "0.75": {"Tc": 0.2621, "err": 0.0015, "method": "MC (24,32)"},
+          "0.5": {"Tc": 0.0, "method": "f_exp = 0 phase"},
+          "0.25": {"Tc": 0.0, "method": "f_exp = 0 phase"}}
+}
