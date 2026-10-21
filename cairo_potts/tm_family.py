@@ -25,6 +25,23 @@ def stripe_sel(n):
     return (lambda x, y: (x % n) != n - 1), n
 
 
+def column_sel(n, S):
+    """General column layout: plaquettes in columns x with (x mod n) in S are
+    paired (orientation still fixed by the parity of x + y).  x = |S| / n."""
+    S = frozenset(S)
+    return (lambda x, y: (x % n) in S), n
+
+
+def parse_layout(spec):
+    """'cairo' or 'n:s1,s2,...' -> (sel, n, x)."""
+    if spec == "cairo":
+        return (lambda x, y: True), 1, 1.0
+    n, S = spec.split(":")
+    n = int(n); S = [int(v) for v in S.split(",")]
+    sel, n = column_sel(n, S)
+    return sel, n, len(S) / n
+
+
 def stripe_sel_low(n):
     """x = 1/n: only plaquettes in columns x = 0 (mod n) are paired."""
     return (lambda x, y: (x % n) == 0), n

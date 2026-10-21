@@ -1,0 +1,290 @@
+[
+ {
+  "layout": "3:0,1",
+  "q": 0.5,
+  "L1": 4,
+  "L2": 6,
+  "Tstar": [],
+  "all_disordered": true
+ },
+ {
+  "layout": "3:0,1",
+  "q": 0.5,
+  "L1": 6,
+  "L2": 8,
+  "Tstar": [],
+  "all_disordered": true
+ },
+ {
+  "layout": "3:0,1",
+  "q": 1.05,
+  "L1": 4,
+  "L2": 6,
+  "Tstar": [],
+  "all_disordered": true
+ },
+ {
+  "layout": "3:0,1",
+  "q": 1.05,
+  "L1": 6,
+  "L2": 8,
+  "Tstar": [],
+  "all_disordered": true
+ },
+ {
+  "layout": "4:0,1,2",
+  "q": 0.5,
+  "L1": 4,
+  "L2": 6,
+  "Tstar": [
+   0.1265825076583521
+  ],
+  "all_disordered": false
+ },
+ {
+  "layout": "4:0,1,2",
+  "q": 0.5,
+  "L1": 6,
+  "L2": 8,
+  "Tstar": [
+   0.1280821348025703
+  ],
+  "all_disordered": false
+ },
+ {
+  "layout": "4:0,1,2",
+  "q": 1.05,
+  "L1": 4,
+  "L2": 6,
+  "Tstar": [
+   0.23575485266363433
+  ],
+  "all_disordered": false
+ },
+ {
+  "layout": "4:0,1,2",
+  "q": 1.05,
+  "L1": 6,
+  "L2": 8,
+  "Tstar": [
+   0.24043966822930002
+  ],
+  "all_disordered": false
+ },
+ {
+  "layout": "6:0,1,2",
+  "q": 0.5,
+  "L1": 4,
+  "L2": 6,
+  "Tstar": [],
+  "all_disordered": false
+ },
+ {
+  "layout": "6:0,1,2",
+  "q": 0.5,
+  "L1": 6,
+  "L2": 8,
+  "Tstar": [],
+  "all_disordered": false
+ },
+ {
+  "layout": "6:0,1,2",
+  "q": 1.05,
+  "L1": 4,
+  "L2": 6,
+  "Tstar": [
+   0.17366204362105198
+  ],
+  "all_disordered": false
+ },
+ {
+  "layout": "6:0,1,2",
+  "q": 1.05,
+  "L1": 6,
+  "L2": 8,
+  "Tstar": [
+   0.17487387794805306
+  ],
+  "all_disordered": false
+ },
+ {
+  "layout": "6:0,1,2,3",
+  "q": 0.5,
+  "L1": 4,
+  "L2": 6,
+  "Tstar": [],
+  "all_disordered": true
+ },
+ {
+  "layout": "6:0,1,2,3",
+  "q": 0.5,
+  "L1": 6,
+  "L2": 8,
+  "Tstar": [],
+  "all_disordered": true
+ },
+ {
+  "layout": "6:0,1,2,3",
+  "q": 1.05,
+  "L1": 4,
+  "L2": 6,
+  "Tstar": [],
+  "all_disordered": true
+ },
+ {
+  "layout": "6:0,1,2,3",
+  "q": 1.05,
+  "L1": 6,
+  "L2": 8,
+  "Tstar": [],
+  "all_disordered": true
+ },
+ {
+  "layout": "8:0,1,2,3,4",
+  "q": 0.5,
+  "L1": 4,
+  "L2": 6,
+  "Tstar": [],
+  "all_disordered": false
+ },
+ {
+  "layout": "8:0,1,2,3,4",
+  "q": 0.5,
+  "L1": 6,
+  "L2": 8,
+  "Tstar": [],
+  "all_disordered": false
+ },
+ {
+  "layout": "8:0,1,2,3,4",
+  "q": 1.05,
+  "L1": 4,
+  "L2": 6,
+  "Tstar": [
+   0.18038343683320116
+  ],
+  "all_disordered": false
+ },
+ {
+  "layout": "8:0,1,2,3,4",
+  "q": 1.05,
+  "L1": 6,
+  "L2": 8,
+  "Tstar": [
+   0.18177202672153653
+  ],
+  "all_disordered": false
+ },
+ {
+  "layout": "8:0,1,2,3,4,5",
+  "q": 0.5,
+  "L1": 4,
+  "L2": 6,
+  "Tstar": [],
+  "all_disordered": true
+ },
+ {
+  "layout": "8:0,1,2,3,4,5",
+  "q": 0.5,
+  "L1": 6,
+  "L2": 8,
+  "Tstar": [],
+  "all_disordered": true
+ },
+ {
+  "layout": "8:0,1,2,3,4,5",
+  "q": 1.05,
+  "L1": 4,
+  "L2": 6,
+  "Tstar": [],
+  "all_disordered": true
+ },
+ {
+  "layout": "8:0,1,2,3,4,5",
+  "q": 1.05,
+  "L1": 6,
+  "L2": 8,
+  "Tstar": [],
+  "all_disordered": true
+ },
+ {
+  "layout": "8:0,1,2,3,4,5,6",
+  "q": 0.5,
+  "L1": 4,
+  "L2": 6,
+  "Tstar": [
+   0.12163665519361508
+  ],
+  "all_disordered": false
+ },
+ {
+  "layout": "8:0,1,2,3,4,5,6",
+  "q": 0.5,
+  "L1": 6,
+  "L2": 8,
+  "Tstar": [
+   0.12251850137462403
+  ],
+  "all_disordered": false
+ },
+ {
+  "layout": "8:0,1,2,3,4,5,6",
+  "q": 1.05,
+  "L1": 4,
+  "L2": 6,
+  "Tstar": [
+   0.2350972847531558
+  ],
+  "all_disordered": false
+ },
+ {
+  "layout": "8:0,1,2,3,4,5,6",
+  "q": 1.05,
+  "L1": 6,
+  "L2": 8,
+  "Tstar": [
+   0.2335158685547157
+  ],
+  "all_disordered": false
+ },
+ {
+  "layout": "cairo",
+  "q": 0.5,
+  "L1": 4,
+  "L2": 6,
+  "Tstar": [
+   0.154507935168382
+  ],
+  "all_disordered": false
+ },
+ {
+  "layout": "cairo",
+  "q": 0.5,
+  "L1": 6,
+  "L2": 8,
+  "Tstar": [
+   0.15480861660758546
+  ],
+  "all_disordered": false
+ },
+ {
+  "layout": "cairo",
+  "q": 1.05,
+  "L1": 4,
+  "L2": 6,
+  "Tstar": [
+   0.25665088900443866
+  ],
+  "all_disordered": false
+ },
+ {
+  "layout": "cairo",
+  "q": 1.05,
+  "L1": 6,
+  "L2": 8,
+  "Tstar": [
+   0.2569432899112143
+  ],
+  "all_disordered": false
+ }
+]
