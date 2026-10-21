@@ -1,0 +1,4 @@
+bin 0 t=51s acc min 0.35 trips 0
+bin 10 t=70s acc min 0.35 trips 0
+bin 20 t=89s acc min 0.35 trips 0
+bin 30 t=108s acc min 0.35 trips 0
