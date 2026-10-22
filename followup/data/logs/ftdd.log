@@ -1,0 +1,4 @@
+N 478 frontier 11
+T=0.04: mirror crossing t*=1.1941   prediction d+slope*T=1.1945   [8s]
+T=0.08: mirror crossing t*=1.1813   prediction d+slope*T=1.1889   [7s]
+T=0.12: mirror crossing t*=1.1630   prediction d+slope*T=1.1834   [7s]

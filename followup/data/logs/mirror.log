@@ -1,0 +1,2 @@
+COUNTEREXAMPLE n=9 edges=[(0, 1), (0, 2), (0, 3), (0, 4), (0, 6), (0, 8), (1, 2), (1, 4), (2, 6), (3, 8), (4, 5), (4, 7), (5, 6), (6, 7), (7, 8)]  best_any=5 best_proper=6 witness=(1, 0, 0, 0, 2, 0, 2, 0, 2)
+tested 2135 graphs; violations of claim M at t=1: 1

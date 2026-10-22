@@ -1,0 +1,4 @@
+N 508 frontier 11
+T=0.04: mirror crossing t*=1.0165   prediction d+slope*T=1.0000   [23s]
+T=0.08: mirror crossing t*=1.0329   prediction d+slope*T=1.0000   [23s]
+T=0.12: mirror crossing t*=1.0494   prediction d+slope*T=1.0000   [23s]

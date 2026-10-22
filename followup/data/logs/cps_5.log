@@ -1,0 +1,1 @@
+seed 5: tested 200 graphs {'planar': 45, 'gnp': 39, 'reg': 116}, n in [11,20], 12 cost points each; violations 0; worst 0.0; ex None
